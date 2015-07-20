@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}
+body{text-align:center;background:#ffffff;}
+img{ border:0;}
+ul,li{ list-style:none;}
+table{ border-collapse:collapse;}
+
+#indexdvp { margin:auto;border:0;width: 99%; height:99%;padding:0;background:#ffffff;text-align:center;} 
+
+#divp1  {visibility: visible;position:absolute;width:100%;height:40px;margin-top:0px;padding:0;text-align:center;}
+
+
+#divp2  {visibility: visible;position:absolute;width:100%;height:100%;padding:0;}
+#divp2a {visibility: visible;position:absolute;width:220px;height:100%;padding:0;margin-left:0px;margin-top:0px;float:left;}
+#divp2b  {visibility: visible;position:absolute;width:100%;height:100%;padding:0;margin-left:0px;margin-top:0px;float:left;}
+
+    

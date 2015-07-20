@@ -1,0 +1,108 @@
+package com.tjt.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.tjt.dao.CommonDAO;
+import com.tjt.entity.TUsercompanytype;
+
+
+public class UsercompanytypeService {
+	private CommonDAO cd;
+
+	public CommonDAO getCd() {
+		return cd;
+	}
+
+	public void setCd(CommonDAO cd) {
+		this.cd = cd;
+	}
+	
+	//��½
+	public TUsercompanytype checkLogin(String loginId,String loginPwd){
+		TUsercompanytype u=null;
+		
+		String hql="from TUsercompanytype where user_phone='"+loginId+"'and user_password='"+loginPwd+"'";
+		@SuppressWarnings("rawtypes")
+		List ls=cd.getObjects(hql);
+		if(ls!=null&&ls.size()>0){
+			System.out.println("��½�ɹ���");
+			u=(TUsercompanytype)ls.get(0);
+		}else{
+			System.out.println("��½���ɹ���");
+		}
+		return u;				
+	}
+	//���
+	public boolean addTUsercompanytype(TUsercompanytype u){
+		try{
+			cd.addObject(u);
+			return true;
+			
+		}catch(Exception ex){
+			return false;
+		}
+		
+	}
+	   //�޸ġ�
+    public boolean updateTUsercompanytype(TUsercompanytype u){
+        try{
+        	cd.updateObject(u);
+        	return true;
+        }catch(Exception ex){
+        	return false;
+        }
+    }
+    
+    //ɾ��
+    public boolean delTUsercompanytype(TUsercompanytype u){
+        try{
+        	cd.delObject(u);
+        	return true;
+        }catch(Exception ex){
+        	return false;
+        }    
+
+    }
+    
+    //��ȡ����
+    public TUsercompanytype getTUsercompanytypeById(int id){
+
+    	return (TUsercompanytype)cd.getObject(TUsercompanytype.class, id);
+    }
+    
+    
+	//��ȡ����
+	@SuppressWarnings("unchecked")
+	public ArrayList<TUsercompanytype> getTUsercompanytypes(){
+		String hql="from TUsercompanytype";
+		return (ArrayList<TUsercompanytype>)cd.getObjects(hql);
+	}
+	
+	//��ҳ��ȡ����
+	public int getCounts(){
+		String hql="from TUsercompanytype";
+		return cd.getObjects(hql).size();
+		
+	}
+	public int getcount(){
+		String hql="select count(*) from TUsercompanytype";
+		return Integer.parseInt(cd.getObjects(hql).get(0).toString());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<TUsercompanytype> getTUsercompanytypeByPageNum(int pageNum,int pageSize){
+		String hql="from TUsercompanytype";
+		return (ArrayList<TUsercompanytype>)cd.getObjectByPageNum(hql, pageNum, pageSize);
+	}
+	public int getcount1(int tid){
+		String hql="select count(*) from TUsercompanytype t where t.TCompany.companyId='"+tid+"'";
+		return Integer.parseInt(cd.getObjects(hql).get(0).toString());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<TUsercompanytype> getTUsercompanytypeByPageNum1(int pageNum,int pageSize,int tid){
+		String hql="from TUsercompanytype t where t.TCompany.companyId='"+tid+"'";
+		return (ArrayList<TUsercompanytype>)cd.getObjectByPageNum(hql, pageNum, pageSize);
+	}		
+}

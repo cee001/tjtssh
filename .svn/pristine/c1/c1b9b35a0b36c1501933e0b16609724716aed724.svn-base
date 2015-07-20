@@ -1,0 +1,70 @@
+package com.tjt.entity;
+
+import com.google.gson.annotations.Expose;
+
+/**
+ * TUserparameters entity. @author MyEclipse Persistence Tools
+ */
+
+public class TUserparameters implements java.io.Serializable {
+
+	// Fields
+
+	@Expose
+	private Integer userparametersId;
+	@Expose
+	private TParameters TParameters;
+	@Expose
+	private TUser TUser;
+	@Expose
+	private String userparametersTime;
+
+	// Constructors
+
+	/** default constructor */
+	public TUserparameters() {
+	}
+
+	/** full constructor */
+	public TUserparameters(TParameters TParameters, TUser TUser,
+			String userparametersTime) {
+		this.TParameters = TParameters;
+		this.TUser = TUser;
+		this.userparametersTime = userparametersTime;
+	}
+
+	// Property accessors
+
+	public Integer getUserparametersId() {
+		return this.userparametersId;
+	}
+
+	public void setUserparametersId(Integer userparametersId) {
+		this.userparametersId = userparametersId;
+	}
+
+	public TParameters getTParameters() {
+		return this.TParameters;
+	}
+
+	public void setTParameters(TParameters TParameters) {
+		this.TParameters = TParameters;
+	}
+
+	public TUser getTUser() {
+		return this.TUser;
+	}
+
+	public void setTUser(TUser TUser) {
+		this.TUser = TUser;
+	}
+
+	public String getUserparametersTime() {
+		return this.userparametersTime;
+	}
+
+	public void setUserparametersTime(String userparametersTime) {
+		this.userparametersTime = userparametersTime;
+	}
+
+}

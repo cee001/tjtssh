@@ -1,0 +1,99 @@
+package com.tjt.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.tjt.dao.CommonDAO;
+import com.tjt.entity.TUserparameters;
+
+
+public class UserparametersService {
+	private CommonDAO cd;
+
+	public CommonDAO getCd() {
+		return cd;
+	}
+
+	public void setCd(CommonDAO cd) {
+		this.cd = cd;
+	}
+	
+	//��½
+	public TUserparameters checkLogin(String loginId,String loginPwd){
+		TUserparameters u=null;
+		
+		String hql="from TUserparameters where user_phone='"+loginId+"'and user_password='"+loginPwd+"'";
+		@SuppressWarnings("rawtypes")
+		List ls=cd.getObjects(hql);
+		if(ls!=null&&ls.size()>0){
+			System.out.println("��½�ɹ���");
+			u=(TUserparameters)ls.get(0);
+		}else{
+			System.out.println("��½���ɹ���");
+		}
+		return u;				
+	}
+	//���
+	public boolean addTUserparameters(TUserparameters u){
+		try{
+			cd.addObject(u);
+			return true;
+			
+		}catch(Exception ex){
+			return false;
+		}
+		
+	}
+	   //�޸ġ�
+    public boolean updateTUserparameters(TUserparameters u){
+        try{
+        	cd.updateObject(u);
+        	return true;
+        }catch(Exception ex){
+        	return false;
+        }
+    }
+    
+    //ɾ��
+    public boolean delTUserparameters(TUserparameters u){
+        try{
+        	cd.delObject(u);
+        	return true;
+        }catch(Exception ex){
+        	return false;
+        }    
+
+    }
+    
+    //��ȡ����
+    public TUserparameters getTUserparametersById(int id){
+
+    	return (TUserparameters)cd.getObject(TUserparameters.class, id);
+    }
+    
+    
+	//��ȡ����
+	@SuppressWarnings("unchecked")
+	public ArrayList<TUserparameters> getTUserparameterss(){
+		String hql="from TUserparameters";
+		return (ArrayList<TUserparameters>)cd.getObjects(hql);
+	}
+	
+	//��ҳ��ȡ����
+	public int getCounts(){
+		String hql="from TUserparameters";
+		return cd.getObjects(hql).size();
+		
+	}
+	public int getcount(){
+		String hql="select count(*) from TUserparameters";
+		return Integer.parseInt(cd.getObjects(hql).get(0).toString());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<TUserparameters> getTUserparametersByPageNum(int pageNum,int pageSize){
+		String hql="from TUserparameters";
+		return (ArrayList<TUserparameters>)cd.getObjectByPageNum(hql, pageNum, pageSize);
+	}
+	
+}

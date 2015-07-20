@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery实现全国省市区城市三级联动代码 - 素材家园（www.sucaijiayuan.com）</title>
+<script src="ssqjs/jquery-1.7.min.js" type="text/javascript"></script>
+<script src="ssqjs/Area.js" type="text/javascript"></script>
+<script src="ssqjs/AreaData_min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function (){
+	initComplexArea('seachprov', 'seachcity', 'seachdistrict', area_array, sub_array, '33', '0', '0');
+
+});
+
+//得到地区码
+function getAreaID(){
+	var area = 0;          
+	if($("#seachdistrict").val() != "0"){
+		area = $("#seachdistrict").val();                
+	}else if ($("#seachcity").val() != "0"){
+		area = $("#seachcity").val();
+	}else{
+		area = $("#seachprov").val();
+
+	}
+	return area;
+}
+
+
+
+</script>
+
+</head>
+<body>
+
+工作地区：<select style="height:30px" id="seachprov" name="seachprov" onChange="changeComplexProvince(this.value, sub_array, 'seachcity', 'seachdistrict');"></select>
+<select onclick="clear2()" style="height:30px" id="seachcity" name="homecity" onChange="changeCity(this.value,'seachdistrict','seachdistrict');"></select>
+<span id="seachdistrict_div"><select onclick="clear2()"  style="height:30px" id="seachdistrict" name="seachdistrict" ></select></span>
+
+</body>
+</html>

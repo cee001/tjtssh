@@ -1,0 +1,120 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}
+
+img{ border:0;}
+ul,li{ list-style:none;}
+table{ border-collapse:collapse;}
+
+#indexdiv { margin:0 auto;border:0;width: 100%;height:100%;padding:0;overflow:hidden; } 
+
+#divp1  {margin:0 auto;margin-top:0px; }
+
+#divp1a  {margin:0 auto;margin-top:0px;padding:0px;width:1000px;}
+#divp1a ul{visibility: visible;position:absolute;float:left;margin:0 2px;height:30px;padding:0px;}
+#divp1a ul li{float:left;margin:0 2px;margin-top:6px;margin-left:2px;}
+
+#divp2  {margin-top: 30px;width:1000px;margin:0 auto;}
+
+#divp2a  {visibility: visible;position:absolute;margin-top:0px;margin-left:0px;text-align:left;float:left;
+         overflow:hidden;width:1000px;height:150px;}
+#divp2b  {visibility: visible;position:absolute;margin-top:150px;margin-left:0px;text-align:left;float:left;
+         overflow:hidden;width:1000px;height:40px;}
+#divp2c  {visibility: visible;position:absolute;margin-top:190px;margin-left:0px;text-align:left;float:left;
+         width:1000px;height:320px;}
+         
+#divp2c1 { margin-top:0px; margin-left:0px;float: left;width:200px;height:320px;}
+#divp2c2 { margin-top:0px; margin-left:0px; float: left;width:598px;height:322px;background: #F7F7F7;text-align: center;}
+#divp2c3 { margin-top:-1px;margin-left:0px; overflow:hidden; float: left;width:200px;height:321px;border: 1px solid;border-color:#3A5FCD;}
+#divp2c3a { margin-top:0px; margin-left:0px;overflow:hidden; float: left;width:200px;height:200px;}
+#divp2c3b { margin-top:0px; margin-left:0px;overflow:hidden; float: left;width:200px;height:120px;}
+
+#divp2e  {visibility: visible;position:absolute;margin-top:530px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:80px;border: 1px solid;border-color:#F2F2F2;}
+#divp2f  {visibility: visible;position:absolute;margin-top:640px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:600px;}
+#divp2g  {visibility: visible;position:absolute;margin-top:1270px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:600px;}
+#divp2h  {visibility: visible;position:absolute;margin-top:1900px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:600px;}
+#divp2i  {visibility: visible;position:absolute;margin-top:2530px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:600px;}
+#divp2j  {visibility: visible;position:absolute;margin-top:3160px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:600px;}
+#divp2k  {visibility: visible;position:absolute;margin-top:3790px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:600px;}
+
+#divp21  {visibility: visible;position:absolute;margin-top:4420px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:200px;background: #F7F7F7;}
+/*论坛*/
+#divp2a_forum  {visibility: visible;position:absolute;margin-top:0px;margin-left:0px;text-align:left;float:left;
+                overflow:hidden;width:1000px;height:100px;}
+#divp2b_forum  {visibility: visible;position:absolute;margin-top:100px;margin-left:0px;text-align:left;float:left;
+                overflow:hidden;width:1000px;height:auto;}
+#divp2b_forum_a  {margin-top:0px;margin-left:0px;text-align:left;float:left; width:168px;height:1400px;background:#EEE685;}
+#divp2b_forum_a  ul{width:168px;margin-left: 0px;margin-top: 30px;line-height: 35px;border-bottom: 1px solid;border-bottom-color:#CDC673;}     
+#divp2b_forum_a  ul li{width:128px;padding-left:40px;border-top: 1px solid;border-top-color:#EEE8CD;cursor:pointer;}                 
+#divp2b_forum_b  {margin-top:0px;margin-left:20px;text-align:left;float:right;overflow:hidden;width:810px;height:1400px;}                  
+/*论坛内容*/
+#divf2a_new  {visibility: visible;position:absolute;margin-top:0px;margin-left:0px;text-align:left;float:left;
+              overflow:hidden;width:1000px;height:40px;border: 1px solid;border-color:#CDC673;}
+#divf2b_new  {visibility: visible;position:absolute;margin-top:50px;margin-left:0px;text-align:left;float:left;
+              padding-top:20px;overflow:hidden;width:1000px;height:50px;}              
+#divf2c_new  {visibility: visible;position:absolute;margin-top:100px;margin-left:0px;text-align:left;float:left;
+              overflow:hidden;width:1000px;height:auto;border: 1px solid;border-color:#CDC673;}
+#divf2c_new  ul{width:100%;padding:0px;}    
+#divf2c_new  ul li{width:100%;margin-left:20px;}    
+/*论坛帖子内容*/
+
+#divv2fd_new1 {margin-top:0px;width:100%;overflow:hidden;height:auto;}
+#divv2fd_new1_ul{ margin-top: 0px;padding: 0px;width:100%;height:35px;list-style-type: none;text-align: center;}
+
+#divv2fd_new1_ull{float:left; margin-top: 0px;padding: 0px;width:100%;height:150px;list-style-type: none;text-align: left;
+                  border: 1px solid;border-color:#CDC673; border-left: 0px solid;}
+#divv2fd_new1_ull li{float:left;font-size:15px;}
+
+#divv2fd_new1_ulll{ margin-top:180px;padding-left: 50px;width:900px;list-style-type: none;text-align: center;}
+
+#divv2fd_new1_uliv{text-align: right;width:1000px;height:40px;background: #FCFCFC;border-bottom: 1px solid;border-color:#EAEAEA;}
+/*评论*/
+#divv2fd_new1_ulvi{width:650px;margin-top:0px;margin-left:175px;height:200px;background:#FCFCFC;border: 1px solid;border-color:#EAEAEA;}
+#divv2fd_new1_ulvi ul{padding:0px;list-style-type: none;}
+#divv2fd_new1_ulvi ul li{visibility: visible;position:absolute;margin-top:15px;}
+/*招聘求职*/
+#divf2b_jop  {visibility: visible;position:absolute;margin-top:50px;margin-left:0px;text-align:left;float:left;
+              padding-top:20px;overflow:hidden;width:1000px;height:50px;} 
+#divf2b_jop ul{padding: 0px;margin-top:0px;margin-left: 0px;height:35px;list-style-type: none;}
+#divf2b_jop ul li{ float: left;font-size:15px;padding-top:10px;width:90px;height:26px;text-align: center;
+                   border: 1px solid;border-color:#EAEAEA;border-bottom: 0px;font-family: 微软雅黑;color:#3A5FCD;cursor:pointer;}                
+
+#divf2c_jop  {visibility: visible;position:absolute;margin-top:120px;margin-left:0px;text-align:left;float:left;
+              overflow:hidden;width:1000px;height:40px;background: #F7F7F7;border: 1px solid;border-color:#EAEAEA;} 
+#divf2d_jop  {visibility: visible;position:absolute;margin-top:180px;margin-left:0px;text-align:left;float:left;
+              overflow:hidden;width:1000px;}
+#divf2d_jop ul{padding: 0px;width:100%;height:auto;list-style-type: none;}
+#divf2d_jop ul li{ float: left;} 
+
+#divjob{width:800px;}	
+#divjob ul{float: left;padding:0px;width:800px;border:1px dashed #C1C1C1;color:#3B3B3B;height:35px;text-align:center;}
+#divjob ul li{visibility: visible;position:absolute;float: left;text-align:center;height:35px;font-size:13px;} 	
+
+/*招聘详情*/
+#divf2f_jop  {visibility: visible;position:absolute;margin-top:100px;margin-left:0px;text-align:left;float:left;overflow:hidden;width:1000px;
+              height:100px;background:#F0F8FF;border: 1px solid;border-color:#EAEAEA;border-top: 3px solid;border-top-color:#3A5FCD;} 
+
+#divf2g_jop  {visibility: visible;position:absolute;margin-top:220px;margin-left:0px;text-align:left;float:left;
+              overflow:hidden;width:1000px;}
+#divf2g_jop ul{padding: 0px;width:100%;height:auto;list-style-type: none;}
+#divf2g_jop ul li{ float: left;} 
+
+/*求职详情*/
+#divf2h_jop  {visibility: visible;position:absolute;margin-top:100px;margin-left:0px;text-align:left;float:left;
+              overflow:hidden;width:1000px;}
+#divf2h_jop ul{padding: 0px;width:100%;height:auto;list-style-type: none;}
+#divf2h_jop ul li{ float: left;} 
+
+/*招聘详情*/
+
+
+

@@ -1,0 +1,39 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}
+
+img{ border:0;}
+ul,li{ list-style:none;}
+table{ border-collapse:collapse;}
+
+#indexdiv { margin:0 auto;border:0;width: 100%;background;#FAFAFA height:100%;padding:0;overflow:hidden; } 
+
+
+#divp1  {width:auto;margin:0 auto;margin-top:0px; }
+
+#divp1a  {margin:0 auto;margin-top:0px;padding:0px;width:980px;}
+#divp1a ul{float:left;margin:0 2px;height:40px;padding:0px;}
+#divp1a ul li{float:left;margin:0 2px;margin-top:6px;margin-left:2px;}
+
+#divp2  {margin-top: 40px;width:980px;margin:0 auto;}
+
+#divp21 {text-align:left;float:left;margin:0 1px;padding: 0px;overflow:hidden;width:75px;position: fixed }
+#divp22{float:right;margin-top:0px;margin-left:0px;overflow:hidden;width:905px;height:auto;background:#FFFFFF;}
+#divp2a  {visibility: visible;position:absolute;margin-top:0px;margin-left:0px;text-align:left;float:left;margin:0 1px;
+         overflow:hidden;width:672px;height:auto;background:#FFFFFF;}
+
+#divp2a1 { margin-top:0px; margin-left:0px;overflow:hidden; float: left;width:670px;height:200px;}
+#divp2a2 {float:left;margin-top:0px;margin-left:0px;overflow:hidden;width:665px;height:auto;padding-left:5px}
+
+#divp2b  {visibility: visible;position:absolute;margin-top:0px;left:673px;text-align:left;float:right;background:#FFFFFF;margin:0 1px;
+          width:228px;height:1800px;}
+
+#divp2b1 {visibility: visible;position:absolute;float: left;top:0px;margin-left:0px;width:226px;height:120px;}
+#divp2b2 {visibility: visible;position:absolute;top:120px;margin-left:0px;width:226px;height:150px;}
+#divp2b3 {visibility: visible;position:absolute;top:270px;margin-top:0px;margin-left:0px;width:226px;height:900px;}
+#divp2b4 {margin-top:0px;margin-left:0px;border: 1px solid;border-color:red;width:226px;height:30px;}
+
+#divp3 {visibility: visible;position:absolute;bottom:100px;right:15px;width:50px;height:50px;position: fixed}
+
+    

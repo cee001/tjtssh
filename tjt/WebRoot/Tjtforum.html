@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>特检通_论坛</title>	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=GBK">
+ 	<script type="text/javascript" src="js/jquery.js"></script>   
+	<link href="css/linkStyle.css" rel="stylesheet" type="text/css" />
+	<link href="css/tjtmallStyle.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">  
+         $(function(){   
+                        
+              $("#divp1").load("qhead_forum.jsp?RandStr="+Math.random()); 	  
+              $("#msg_forum").load("qlistexchange_forum.jsp?tid=2150"); 
+              $("#divp21").load("qfoot_new.jsp"); 
+
+          });             
+        function openhref1(id){
+         
+            var src="";            
+            if(id==0){         
+               var name=document.getElementById("title2").value;                    
+               src="qlistforum_search.jsp?key="+name;     
+               document.getElementById("outid").value="2150";
+            
+            }else{
+               document.getElementById("outid").value=id;            
+               src="qlistexchange_forum.jsp?tid="+id;
+               changed(id);
+             }
+ 
+      		 $.ajax({ 
+			     async:false,    	       		
+				 type:"get",
+				 url:src, 
+				 success:function(d){			                 
+				        $("#msg_forum").html(d); 
+				        changedd(); 
+	                              
+	             }
+                           	                        		
+			});	
+		}	      
+
+		function changed(id){
+			document.getElementById("l"+id).style.background="#FFB90F";
+			document.getElementById("l"+id).style.color="#ffffff";
+				
+		}
+		function rechanged(a){		
+			var outid=document.getElementById("outid").value;	   
+			if(a==outid){
+
+			document.getElementById("l"+a).style.background="#FFB90F";
+            document.getElementById("l"+a).style.color="#ffffff";
+			}else{	     
+		     
+		    document.getElementById("l"+a).style.background="none";
+		    document.getElementById("l"+a).style.color="#0A0A0A";
+		    }
+
+			}	
+		function changedd(){
+			 document.getElementById("l2150").style.background="none";
+		     document.getElementById("l2150").style.color="#0A0A0A";		
+			 document.getElementById("l2151").style.background="none";
+		     document.getElementById("l2151").style.color="#0A0A0A";
+		     document.getElementById("l2152").style.background="none";
+		     document.getElementById("l2152").style.color="#0A0A0A";
+		     document.getElementById("l4001").style.background="none";
+		     document.getElementById("l4001").style.color="#0A0A0A";
+		     document.getElementById("l4002").style.background="none";
+		     document.getElementById("l4002").style.color="#0A0A0A";
+		     document.getElementById("l4003").style.background="none";
+		     document.getElementById("l4003").style.color="#0A0A0A";
+		     document.getElementById("l4004").style.background="none";
+		     document.getElementById("l4004").style.color="#0A0A0A";
+		     document.getElementById("l5001").style.background="none";
+		     document.getElementById("l5001").style.color="#0A0A0A";
+		     document.getElementById("l5002").style.background="none";
+		     document.getElementById("l5002").style.color="#0A0A0A";
+		     document.getElementById("l5003").style.background="none";
+		     document.getElementById("l5003").style.color="#0A0A0A";
+		     document.getElementById("l5004").style.background="none";
+		     document.getElementById("l5004").style.color="#0A0A0A";
+		     document.getElementById("l5005").style.background="none";
+		     document.getElementById("l5005").style.color="#0A0A0A";
+		     document.getElementById("l5006").style.background="none";
+		     document.getElementById("l5006").style.color="#0A0A0A";
+			
+		}	
+	
+       $(function(){   
+
+            document.getElementById("l2150").style.background="#FFB90F";
+          	
+            });             
+                 
+        function openhref(src){
+        
+              window.open(src,target="_blank");
+               
+        }          
+    </script>      
+  
+
+  </head>
+  
+  <body>
+
+    <input id="outid" type="hidden" value="2150">
+    <div id="indexdiv"> 
+       <div id="divp1">
+         
+       </div>
+       <div id="divp2" onmouseover="rechangex1()">
+           <div onmouseover="rechangex1()" id="divp2a_forum" >       
+           <img alt="" src="images/home/luntan_03.png">
+           <div id="dh_forum"></div>
+           </div> 
+           <div id="divp2b_forum">  
+              <div id="divp2b_forum_a">
+                <ul>
+                  <li id="l2150" onclick="openhref1(2150)" onmousemove="changed(2150)" onmouseout="rechanged(2150)" style="padding-left: 15px;width:153px">
+	                  <table>
+		                  <tr>
+			                  <td style="height:32px"><div style="height:100%;padding-top:5px;"><img alt="" src="images/home/tiezi.png"></div></td>
+			                  <td><b style="color: #ffffff;">&nbsp;全部帖子&nbsp;></b></td>
+		                  </tr>
+	                  </table>
+                     
+                  </li>                
+                  <li id="l2151" onclick="openhref1(2151)" onmousemove="changed(2151)" onmouseout="rechanged(2151)"style="padding-left: 12px;width:156px">
+	                  <table>
+		                  <tr>
+			                  <td style="height:32px"><div style="height:100%;padding-top:5px;"><img alt="" src="images/home/luntan1.png"></div></td>
+			                  <td><b style="color: #ffffff;">&nbsp;行业交流&nbsp;></b></td>
+		                  </tr>
+	                  </table>                  
+                     
+                  </li>
+                  <li id="l4001" onclick="openhref1(4001)" onmousemove="changed(4001)" onmouseout="rechanged(4001)">技术交流</li>
+                  <li id="l4002" onclick="openhref1(4002)" onmousemove="changed(4002)" onmouseout="rechanged(4002)">专家答疑</li>
+                  <li id="l4003" onclick="openhref1(4003)" onmousemove="changed(4003)" onmouseout="rechanged(4003)">行业杂谈</li>
+                  <li id="l4004" onclick="openhref1(4004)" onmousemove="changed(4004)" onmouseout="rechanged(4004)">考证交流</li>
+                  <li id="l2152" onclick="openhref1(2152)" onmousemove="changed(2152)" onmouseout="rechanged(2152)"style="padding-left: 17px;width:151px">
+                     <table>
+		                  <tr>
+			                  <td><div style="height:100%;padding-top:4px;"><img alt="" src="images/home/luntan_31.png"></div></td>
+			                  <td><b style="color: #ffffff;">&nbsp;知识下载&nbsp;></b></td>
+		                  </tr>
+	                  </table>   
+                  </li>
+                  <li id="l5001" onclick="openhref1(5001)" onmousemove="changed(5001)" onmouseout="rechanged(5001)">专业知识</li>
+                  <li id="l5002" onclick="openhref1(5002)" onmousemove="changed(5002)" onmouseout="rechanged(5002)">行业标准</li>
+                  <li id="l5003" onclick="openhref1(5003)" onmousemove="changed(5003)" onmouseout="rechanged(5003)">政策法规</li>
+                  <li id="l5004" onclick="openhref1(5004)" onmousemove="changed(5004)" onmouseout="rechanged(5004)">工艺资料</li>   
+                  <li id="l5005" onclick="openhref1(5005)" onmousemove="changed(5005)" onmouseout="rechanged(5005)">工程案例</li>
+                  <li id="l5006" onclick="openhref1(5006)" onmousemove="changed(5006)" onmouseout="rechanged(5006)">模拟测试</li>                                   
+                </ul>
+              </div>  
+              <div id="divp2b_forum_b">
+                <ul>
+                   <li style="margin-top:10px;width:130px;height:50px;border: 1px solid;border-color:#CD9B1D;border-radius: 10px;">                    
+                     <table>
+                       <tr>
+	                       <td><img alt="" src="images/home/luntan_10.png" style="margin-left: 10px;"></td>
+	                       <td style="width:100px;height:50px;font-size: 17px;font-family: 微软雅黑;"><b>发表帖子</b></td>
+                       </tr>
+                     </table>
+                   </li>
+                   <li style="margin-top:30px;height:40px;background: #EEE685;">
+                   <table style="width:810px;height:100%;">
+                       <tr>                    
+	                       <td style="width:40px">
+                               <div style="height:100%;padding-top:8px;margin-left: 20px"><img alt="" src="images/home/luntan_15.png" height="20px"></div>
+                           </td>
+                           <td style="font-size: 15px;font-family: 微软雅黑;">&nbsp;帖子</td>
+	                       <td>				
+						 	 <div style="width:100%;text-align:right;">
+						        <ul style="padding:0px;float: right;margin-right: 10px">
+						           		        <!--------  搜索         ------->	
+						          <li id="sou1" onclick="openhref1(0)" onmousemove="this.style.background='#EE9A00'" onmouseout="this.style.background='#CD9B1D'"
+						              style="float: right;text-align: center;width:50px;height:22px;font-size:16px;background:#CD9B1D">	
+						              <img alt="" src="images/home/sosuo.png" style="margin-top: 2px">			        				            			              				                      			                		           
+						          </li>       	           		        
+						          <li style="float: right;">
+						              <input id="title2" style="width:200px;height: 20px;border: 1px solid;border-color:#CD9B1D;" type="text" name="title" >						
+						          </li>		        	            	        	
+						        </ul>	             
+						     </div>               			                       
+	                       </td>
+                       </tr>
+                   </table>
+                   </li>
+                   <li id="msg_forum">
+                   
+                   </li>
+                </ul> 
+              </div>                    
+           </div> 
+
+           <div id="#divp21">  
+           
+           </div> 
+                  
+       </div>    
+
+    </div>
+  </body>
+</html>
+
+
+                           

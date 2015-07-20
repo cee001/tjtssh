@@ -1,0 +1,90 @@
+package com.tjt.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import com.google.gson.annotations.Expose;
+
+/**
+ * TParameters entity. @author MyEclipse Persistence Tools
+ */
+
+public class TParameters implements java.io.Serializable {
+
+	// Fields
+
+	@Expose
+	private Integer parametersId;
+	@Expose
+	private TUser TUser;
+	@Expose
+	private TCompany TCompany;
+	@Expose
+	private String parametersTime;
+	private Set TUserparameterses = new HashSet(0);
+
+	// Constructors
+
+	/** default constructor */
+	public TParameters() {
+	}
+
+	/** minimal constructor */
+	public TParameters(TUser TUser, TCompany TCompany, String parametersTime) {
+		this.TUser = TUser;
+		this.TCompany = TCompany;
+		this.parametersTime = parametersTime;
+	}
+
+	/** full constructor */
+	public TParameters(TUser TUser, TCompany TCompany, String parametersTime,
+			Set TUserparameterses) {
+		this.TUser = TUser;
+		this.TCompany = TCompany;
+		this.parametersTime = parametersTime;
+		this.TUserparameterses = TUserparameterses;
+	}
+
+	// Property accessors
+
+	public Integer getParametersId() {
+		return this.parametersId;
+	}
+
+	public void setParametersId(Integer parametersId) {
+		this.parametersId = parametersId;
+	}
+
+	public TUser getTUser() {
+		return this.TUser;
+	}
+
+	public void setTUser(TUser TUser) {
+		this.TUser = TUser;
+	}
+
+	public TCompany getTCompany() {
+		return this.TCompany;
+	}
+
+	public void setTCompany(TCompany TCompany) {
+		this.TCompany = TCompany;
+	}
+
+	public String getParametersTime() {
+		return this.parametersTime;
+	}
+
+	public void setParametersTime(String parametersTime) {
+		this.parametersTime = parametersTime;
+	}
+
+	public Set getTUserparameterses() {
+		return this.TUserparameterses;
+	}
+
+	public void setTUserparameterses(Set TUserparameterses) {
+		this.TUserparameterses = TUserparameterses;
+	}
+
+}

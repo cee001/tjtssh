@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>特检通</title>	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=GBK">
+ 	<script type="text/javascript" src="js/jquery.js"></script>   
+	<link href="css/linkStyle.css" rel="stylesheet" type="text/css" />
+	<link href="css/tjtmallStyle.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+  
+            $(function(){   
+                           
+                 $("#divp1").load("qhead.jsp?RandStr="+Math.random()); 	  
+                 $("#divp2a").load("qSearchnews_mall.jsp");                 	  
+                 $("#divp2b").load("qdh_mall.jsp"); 	  
+                 $("#divp2c1").load("qmallnavigation.jsp"); 
+                 $("#divp2c2").load("tlunbo.html");	                  
+                 $("#divp2c3a").load("qlistsupdem_mall.jsp"); 
+                 $("#divp21").load("qfoot_new.jsp"); 
+
+            	 $.ajax({ 
+            	     async:false,   			          	       		
+				     type:"get",
+				     url:"qlistekNondestructive2.jsp?RandStr="+Math.random(), 
+				     success:function(d){				                 
+				            $("#divp2f").html(d);       
+				     }              			
+				   });
+				 $.ajax({ 
+            	     async:false,   			          	       		
+				     type:"get",
+				     url:"qlistekPhycal2.jsp?RandStr="+Math.random(), 
+				     success:function(d){				                 
+				            $("#divp2g").html(d);       
+				     }              			
+				   });
+				 $.ajax({ 
+            	     async:false,   			          	       		
+				     type:"get",
+				     url:"qlistekpressure2.jsp?RandStr="+Math.random(), 
+				     success:function(d){				                 
+				            $("#divp2h").html(d);       
+				     }              			
+				   }); 
+				 $.ajax({ 
+            	     async:false,   			          	       		
+				     type:"get",
+				     url:"qlistekPole2.jsp?RandStr="+Math.random(), 
+				     success:function(d){				                 
+				            $("#divp2i").html(d);       
+				     }              			
+				   });
+				 $.ajax({ 
+            	     async:false,   			          	       		
+				     type:"get",
+				     url:"qlistekmeasure2.jsp?RandStr="+Math.random(), 
+				     success:function(d){				                 
+				            $("#divp2j").html(d);       
+				     }              			
+				   });
+				 $.ajax({ 
+            	     async:false,   			          	       		
+				     type:"get",
+				     url:"qlistekspecial2.jsp?RandStr="+Math.random(), 
+				     success:function(d){				                 
+				            $("#divp2k").html(d);       
+				     }              			
+				   });         
+				                       
+            	 $.ajax({ 			          	       		
+				     type:"get",
+				     url:"kong.jsp", 
+				     success:function(d){
+				                 
+				            $("#divdh").html(d);
+				     		var did=document.getElementById("d1").value;  	
+							document.getElementById(did).style.background="url(images/TJT/96.png)";
+							document.getElementById(did).style.color="red";	       
+				     }              
+			
+				   });
+		   
+	  });
+	        function openhref(src){
+   
+       		 $.ajax({ 
+			     async:false,    	       		
+				     type:"get",
+				     url:src+"&RandStr="+Math.random(), 
+				     success:function(d){
+				                 
+				                 $("#divp2c2a").html(d);  
+	                              
+	                             }
+	                            
+	                        
+			
+				});	
+			}	      
+      
+  
+    </script>
+  </head>
+  
+  <body>
+    <input id="doutid" type="hidden" value="2">
+    <div id="indexdiv"> 
+       <div id="divp1">
+         
+       </div>
+       <div id="divp2" onmouseover="rechangex1()">
+           <div onmouseover="rechangex1()" id="divp2a">       
+           
+           </div> 
+           <div id="divp2b">  
+    
+           </div> 
+           <div id="divp2c">
+              <div id="divp2c1">
+            
+              </div>     
+              <div id="divp2c2">
+
+              </div>
+              <div id="divp2c3">
+                 <div id="divp2c3a">
+                 
+                 </div>
+                 <div id="divp2c3b">
+                 <img alt="" width="100%" src="images/home/t2.png">
+                 </div>
+              </div>  
+           </div>   
+
+           <div id="divp2e">  
+             <img alt="" src="images/home/mall_07.png">
+           
+           </div> 
+           <div id="divp2f">  
+           1F     
+           </div> 
+           <div id="divp2g"> 
+           2F      
+           </div> 
+           <div id="divp2h">  
+           3F     
+           </div> 
+           <div id="divp2i"> 
+           4F      
+           </div> 
+           <div id="divp2j"> 
+           5F
+           </div> 
+           <div id="divp2k">   
+           6F    
+           </div>       
+           <div id="divp21">   
+           FOOT    
+           </div>                     
+       </div>    
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+ http://www.springframework.org/schema/tx 
+ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+ http://www.springframework.org/schema/aop
+ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml">
+		</property>
+
+	</bean>
+	<bean id="myHibTxManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<tx:advice id="txAdvice" transaction-manager="myHibTxManager">
+		<tx:attributes>
+			<!-- 对get/load/search开头的方法要求只读事务/SUPPORTS支持 -->
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="load*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="search*" propagation="SUPPORTS" read-only="true" />
+			<!-- 对其它方法要求事务/required要求 命令/propagation传播，传输 -->
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<!-- 对Service添加事务支持，因为前面配置的transactionManager 是专对Hibernate的事务管理器 。 -->
+		<aop:pointcut id="serviceMethods"
+			expression="execution(* com.tjt.service.*.*(..))" />
+		<!-- 织入 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods" />
+	</aop:config>
+
+	<bean id="commonDao" class="com.tjt.dao.CommonDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="as" class="com.tjt.service.AdminService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="ps" class="com.tjt.service.PowerServeice">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="ms" class="com.tjt.service.MenuService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="ris" class="com.tjt.service.RoleInfoService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="collectionsService" class="com.tjt.service.CollectionsService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="commentsService" class="com.tjt.service.CommentsService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="cms" class="com.tjt.service.CommentsService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="companyService" class="com.tjt.service.CompanyService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="cys" class="com.tjt.service.CompanyService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="companytypeService" class="com.tjt.service.CompanytypeService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="companyusertypeService" class="com.tjt.service.CompanyusertypeService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="cts" class="com.tjt.service.UsercompanytypeService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="devicegpsService" class="com.tjt.service.DevicegpsService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="deviceService" class="com.tjt.service.DeviceService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="des" class="com.tjt.service.DeviceService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>	
+	<bean id="integralService" class="com.tjt.service.IntegralService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="messagepushService" class="com.tjt.service.MessagepushService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="messagesService" class="com.tjt.service.MessagesService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+	<bean id="messagestypeService" class="com.tjt.service.MessagestypeService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+		<bean id="parametersService" class="com.tjt.service.ParametersService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+		<bean id="usercompanytypeService" class="com.tjt.service.UsercompanytypeService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+		<bean id="userdeviceService" class="com.tjt.service.UserdeviceService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+		<bean id="userparametersService" class="com.tjt.service.UserparametersService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+		<bean id="userService" class="com.tjt.service.UserService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+		<bean id="productService" class="com.tjt.service.ProductService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+		<bean id="producttypeService" class="com.tjt.service.ProducttypeService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+		<bean id="recruitmentresumeService" class="com.tjt.service.RecruitmentresumeService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+		<bean id="recruitmentService" class="com.tjt.service.RecruitmentService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+		<bean id="resumeService" class="com.tjt.service.ResumeService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+		<bean id="forjobService" class="com.tjt.service.ForjobService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+
+	<bean id="us" class="com.tjt.service.UserService">
+		<property name="cd" ref="commonDao"></property>
+	</bean>
+
+	<bean id="adminAction" class="com.tjt.action.AdminAction">
+		<property name="as" ref="as"></property>
+		<property name="ris" ref="ris"></property>
+	</bean>
+	<bean id="tUserAction" class="com.tjt.action.TUserAction">
+		<property name="us" ref="us"></property>
+
+	</bean>
+	<bean id="menuAction" class="com.tjt.action.MenuAction">
+		<property name="ps" ref="ps"></property>
+		<property name="ms" ref="ms"></property>
+	</bean>
+	<bean id="roleInfoAction" class="com.tjt.action.RoleInfoAction">
+		<property name="ris" ref="ris"></property>
+	</bean>
+	<bean id="commentsAction" class="com.tjt.action.CommentsAction">
+		<property name="cms" ref="cms"></property>
+	</bean>
+	<bean id="companyAction" class="com.tjt.action.CompanyAction">
+		<property name="cys" ref="cys"></property>
+	</bean>
+	<bean id="usercompanytypeAction" class="com.tjt.action.UsercompanytypeAction">
+		<property name="cts" ref="cts"></property>
+	</bean>
+	<bean id="deviceAction" class="com.tjt.action.DeviceAction">
+		<property name="des" ref="des"></property>
+	</bean>	
+	<bean id="MobileAction" class="com.tjt.action.MobileAction">
+		<property name="collectionsService" ref="collectionsService"></property>
+		<property name="commentsService" ref="commentsService"></property>
+		<property name="companyService" ref="companyService"></property>
+		<property name="companytypeService" ref="companytypeService"></property>
+		<property name="companyusertypeService" ref="companyusertypeService"></property>
+		<property name="devicegpsService" ref="devicegpsService"></property>
+		<property name="deviceService" ref="deviceService"></property>
+		<property name="integralService" ref="integralService"></property>
+		<property name="messagepushService" ref="messagepushService"></property>
+		<property name="messagesService" ref="messagesService"></property>
+		<property name="messagestypeService" ref="messagestypeService"></property>
+		<property name="parametersService" ref="parametersService"></property>
+		<property name="usercompanytypeService" ref="usercompanytypeService"></property>
+		<property name="userdeviceService" ref="userdeviceService"></property>
+		<property name="userparametersService" ref="userparametersService"></property>
+		<property name="userService" ref="userService"></property>
+		<property name="productService" ref="productService"></property>
+		<property name="producttypeService" ref="producttypeService"></property>
+		<property name="recruitmentresumeService" ref="recruitmentresumeService"></property>
+		<property name="recruitmentService" ref="recruitmentService"></property>
+		<property name="resumeService" ref="resumeService"></property>
+		<property name="forjobService" ref="forjobService"></property>
+	</bean>
+</beans>
+
+
+

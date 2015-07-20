@@ -1,0 +1,46 @@
+﻿<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory name="foo">
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.ProxoolConnectionProvider</property>
+		<property name="hibernate.proxool.xml">proxool.xml</property>
+		<property name="hibernate.proxool.pool_alias">mysql</property>
+		<property name="show_sql">false</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- 方言 -->
+		<mapping resource="com/tjt/entity/Admin.hbm.xml" />
+		<mapping resource="com/tjt/entity/RoleInfo.hbm.xml" />
+		<mapping resource="com/tjt/entity/Menu.hbm.xml" />
+		<mapping resource="com/tjt/entity/Power.hbm.xml" />
+		<mapping resource="com/tjt/entity/TCollections.hbm.xml" />
+		<mapping resource="com/tjt/entity/TComments.hbm.xml" />
+		<mapping resource="com/tjt/entity/TCompany.hbm.xml" />
+		<mapping resource="com/tjt/entity/TCompanytype.hbm.xml" />
+		<mapping resource="com/tjt/entity/TCompanyusertype.hbm.xml" />
+		<mapping resource="com/tjt/entity/TDevice.hbm.xml" />
+		<mapping resource="com/tjt/entity/TDevicegps.hbm.xml" />
+		<mapping resource="com/tjt/entity/TIntegral.hbm.xml" />
+		<mapping resource="com/tjt/entity/TMessages.hbm.xml" />
+		<mapping resource="com/tjt/entity/TMessagepush.hbm.xml" />
+		<mapping resource="com/tjt/entity/TMessagestype.hbm.xml" />
+		<mapping resource="com/tjt/entity/TParameters.hbm.xml" />
+		<mapping resource="com/tjt/entity/TParametersdata.hbm.xml" />
+		<mapping resource="com/tjt/entity/TParametersname.hbm.xml" />
+		<mapping resource="com/tjt/entity/TParametersproject.hbm.xml" />
+		<mapping resource="com/tjt/entity/TUserparametersroject.hbm.xml" />
+		<mapping resource="com/tjt/entity/TUser.hbm.xml" />
+		<mapping resource="com/tjt/entity/TUsergps.hbm.xml" />
+		<mapping resource="com/tjt/entity/TUsercompanytype.hbm.xml" />
+		<mapping resource="com/tjt/entity/TUserdevice.hbm.xml" />
+		<mapping resource="com/tjt/entity/TProduct.hbm.xml" />
+		<mapping resource="com/tjt/entity/TProducttype.hbm.xml" />
+		<mapping resource="com/tjt/entity/TRecruitment.hbm.xml" />
+		<mapping resource="com/tjt/entity/TRecruitmentresume.hbm.xml" />
+		<mapping resource="com/tjt/entity/TResume.hbm.xml" />
+		<mapping resource="com/tjt/entity/TForjob.hbm.xml" />
+		<mapping resource="com/tjt/entity/TDownload.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

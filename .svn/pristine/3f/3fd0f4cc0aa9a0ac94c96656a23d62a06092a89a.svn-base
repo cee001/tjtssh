@@ -1,0 +1,128 @@
+package com.tjt.action;
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.tjt.entity.Admin;
+import com.tjt.entity.RoleInfo;
+import com.tjt.service.AdminService;
+import com.tjt.service.RoleInfoService;
+
+@SuppressWarnings("serial")
+public class AdminAction extends ActionSupport{
+	private Admin u;
+	private AdminService as;
+	private RoleInfoService ris;
+	
+	public RoleInfoService getRis() {
+		return ris;
+	}
+
+	public void setRis(RoleInfoService ris) {
+		this.ris = ris;
+	}
+
+
+	public AdminService getAs() {
+		return as;
+	}
+
+	public void setAs(AdminService as) {
+		this.as = as;
+	}
+
+	public Admin getU() {
+		return u;
+	}
+
+	public void setU(Admin u) {
+		this.u = u;
+	}
+	//��½
+	public String dologin(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		String loginId=request.getParameter("loginId");
+		String loginPwd=request.getParameter("loginPwd");
+		u=as.checkLogin(loginId, loginPwd);
+		if(u!=null){
+			HttpSession session=request.getSession();
+			session.setAttribute("login", u);
+			return "success";
+		}else{
+			return "fail";
+		}
+	}
+	//��ȡ���н�ɫ
+	public void requestSetRoles(){
+		//��ȡ���н�ɫ����
+
+		ArrayList<RoleInfo> al=ris.getAllRoleInfos();
+		//����ɫ��װ��request��
+		HttpServletRequest request=ServletActionContext.getRequest();
+		request.setAttribute("al", al);
+		
+	}
+	//���
+	public String doAdd(){
+		if(as.addUser(u)){
+		  return this.showList();		
+		}else{
+			
+			return "fail";
+		}	
+		}
+	//��ʾ�޸�
+	public String showUpdate(){
+
+		u=as.getUserById(u.getId());		
+        this.requestSetRoles();
+			return "showUpdate";		
+	
+	}
+		
+	//�޸�
+	public String doUpdate(){
+
+		if(as.updateUser(u)){
+			return this.showList();		
+		}else{
+			
+			return "fail";
+		}	
+	}
+	//ɾ��
+	public String doDel(){
+
+		if(as.delUser(u)){
+			return this.showList();		
+		}else{
+			
+			return this.showList();
+		}	
+	}
+	//��ϸ
+	public String showDetail(){
+
+		u=as.getUserById(u.getId());	
+	    this.requestSetRoles();
+		return "showDetail";		
+	
+	}
+	//��ȡ����
+	public String showList(){
+		HttpServletRequest request=ServletActionContext.getRequest();
+		ArrayList<Admin> al=as.getUsers();
+		request.setAttribute("al",al);
+		return "showList";
+		
+		
+		
+	}
+
+
+}

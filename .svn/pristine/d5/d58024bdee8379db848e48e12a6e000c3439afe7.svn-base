@@ -1,0 +1,109 @@
+package com.tjt.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.tjt.dao.CommonDAO;
+import com.tjt.entity.TCompany;
+
+
+public class CompanyService {
+	private CommonDAO cd;
+
+	public CommonDAO getCd() {
+		return cd;
+	}
+
+	public void setCd(CommonDAO cd) {
+		this.cd = cd;
+	}
+	
+	//��½
+	public TCompany checkLogin(String loginId,String loginPwd){
+		TCompany u=null;
+		
+		String hql="from TCompany where user_phone='"+loginId+"'and user_password='"+loginPwd+"'";
+		@SuppressWarnings("rawtypes")
+		List ls=cd.getObjects(hql);
+		if(ls!=null&&ls.size()>0){
+			System.out.println("��½�ɹ���");
+			u=(TCompany)ls.get(0);
+		}else{
+			System.out.println("��½���ɹ���");
+		}
+		return u;				
+	}
+	//���
+	public boolean addTCompany(TCompany u){
+		try{
+			cd.addObject(u);
+			return true;
+			
+		}catch(Exception ex){
+			return false;
+		}
+		
+	}
+	   //�޸ġ�
+    public boolean updateTCompany(TCompany u){
+        try{
+        	cd.updateObject(u);
+        	return true;
+        }catch(Exception ex){
+        	return false;
+        }
+    }
+    
+    //ɾ��
+    public boolean delTCompany(TCompany u){
+        try{
+        	cd.delObject(u);
+        	return true;
+        }catch(Exception ex){
+        	return false;
+        }    
+
+    }
+    
+    //��ȡ����
+    public TCompany getTCompanyById(int id){
+
+    	return (TCompany)cd.getObject(TCompany.class, id);
+    }
+    
+    
+	//��ȡ����
+	@SuppressWarnings("unchecked")
+	public ArrayList<TCompany> getTCompanys(){
+		String hql="from TCompany";
+		return (ArrayList<TCompany>)cd.getObjects(hql);
+	}
+	
+	//��ҳ��ȡ����
+	public int getCounts(){
+		String hql="from TCompany";
+		return cd.getObjects(hql).size();
+		
+	}
+	public int getcount(){
+		String hql="select count(*) from TCompany";
+		return Integer.parseInt(cd.getObjects(hql).get(0).toString());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<TCompany> getTCompanyByPageNum(int pageNum,int pageSize){
+		String hql="from TCompany";
+		return (ArrayList<TCompany>)cd.getObjectByPageNum(hql, pageNum, pageSize);
+	}
+
+	public int getcount1(int aid){
+		String hql="select count(*) from TCompany where companyStatus="+aid;
+		return Integer.parseInt(cd.getObjects(hql).get(0).toString());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<TCompany> getTCompanyByPageNum1(int pageNum,int pageSize,int aid){
+		String hql="from TCompany where companyStatus="+aid;
+		return (ArrayList<TCompany>)cd.getObjectByPageNum(hql, pageNum, pageSize);
+	}
+}

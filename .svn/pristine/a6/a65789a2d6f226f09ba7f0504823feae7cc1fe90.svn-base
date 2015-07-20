@@ -1,0 +1,76 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}
+
+img{ border:0;}
+ul,li{ list-style:none;}
+table{ border-collapse:collapse;}
+
+#indexdiv { margin:0 auto;border:0;width: 100%;background;#FFFFFF height:100%;padding:0;overflow:hidden; } 
+
+
+#divp1  {margin:0 auto;margin-top:0px; }
+
+#divp1a  {margin:0 auto;margin-top:0px;padding:0px;width:1000px;}
+#divp1a ul{visibility: visible;position:absolute;float:left;margin:0 2px;height:30px;padding:0px;}
+#divp1a ul li{float:left;margin:0 2px;margin-top:6px;margin-left:2px;}
+
+#divp2  {margin-top: 30px;width:1000px;height:3500px;margin:0 auto;}
+
+#divp2a  {visibility: visible;position:absolute;margin-top:0px;margin-left:0px;text-align:left;float:left;
+         overflow:hidden;width:1000px;height:150px;background:#FFFFFF;}
+#divp2b  {visibility: visible;position:absolute;margin-top:150px;margin-left:0px;text-align:left;float:left;
+         overflow:hidden;width:1000px;height:50px;background:#FFFFFF;}
+#divp2c  {visibility: visible;position:absolute;margin-top:210px;margin-left:0px;text-align:left;float:left;
+         overflow:hidden;width:1000px;height:620px;background:#FFFFFF;}
+         
+#divp2c1 { margin-top:0px; margin-left:0px; float: left;width:200px;height:618px;border: 1px solid;border-color:#F2F2F2;;}
+#divp2c1a {margin-top:0px;margin-left:0px;width:100%;height:206px;}
+#divp2c1b {margin-top:0px;margin-left:0px;overflow:hidden;width:200px;height:206px;}
+#divp2c1c {margin-top:0px;margin-left:0px;overflow:hidden;width:200px;height:206px;}
+
+#divp2c2 { margin-top:0px; margin-left:20px;overflow:hidden; float: left;width:400px;height:620px;}
+#divp2c2a { margin-top:0px; margin-left:0px;overflow:hidden; float: left;width:400px;height:410px;overflow: hidden;}
+#divp2c2b { margin-top:0px; margin-left:0px;overflow:hidden; float: left;width:400px;height:210px;}
+
+#divp2c3 { visibility: visible;position:absolute;margin-top:0px;margin-left:640px; overflow:hidden; float: left;width:360px;height:620px; }
+#divp2c3a { margin-top:0px; margin-left:0px;overflow:hidden; float: left;width:360px;height:220px;}
+#divp2c3b { margin-top:0px; margin-left:0px;overflow:hidden; float: left;width:360px;height:400px;}
+
+#divp2d  {visibility: visible;position:absolute;margin-top:850px;margin-left:0px;text-align:left;float:left;width:1000px;height:450px;}
+#divp2d1 { margin-top:0px; margin-left:0px;overflow:hidden; float: left;width:318px;height:450px;border: 1px solid;border-color:#F2F2F2;}
+#divp2d2 { margin-top:0px; margin-left:20px;overflow:hidden; float: left;width:318px;height:450px;border: 1px solid;border-color:#F2F2F2;}
+#divp2d3 { margin-top:0px; margin-right:0px;overflow:hidden; float: right;width:318px;height:450px;border: 1px solid;border-color:#F2F2F2;}
+
+#divp2e  {visibility: visible;position:absolute;margin-top:1320px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:40px;}
+#divp2f  {visibility: visible;position:absolute;margin-top:1380px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:300px}
+#divp2g  {visibility: visible;position:absolute;margin-top:1700px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:300px;}
+#divp2h  {visibility: visible;position:absolute;margin-top:2020px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:300px;}
+#divp2i  {visibility: visible;position:absolute;margin-top:2340px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:300px;}
+#divp2j  {visibility: visible;position:absolute;margin-top:2660px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:300px;}
+#divp2k  {visibility: visible;position:absolute;margin-top:2980px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:300px;}
+
+#divp21  {visibility: visible;position:absolute;margin-top:3300px;margin-left:0px;text-align:left;float:left;
+          width:1000px;height:200px;background: #F7F7F7;}
+
+    
+
+
+
+
+
+
+
+
+
+
+
+

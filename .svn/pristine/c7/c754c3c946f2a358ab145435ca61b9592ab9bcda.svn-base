@@ -1,0 +1,527 @@
+package com.tjt.action;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+import com.opensymphony.xwork2.ActionSupport;
+import com.qiniu.api.auth.digest.Mac;
+import com.qiniu.api.config.Config;
+import com.qiniu.api.rs.PutPolicy;
+import com.tjt.entity.TComments;
+import com.tjt.entity.TMessages;
+import com.tjt.entity.TUser;
+import com.tjt.service.CollectionsService;
+import com.tjt.service.CommentsService;
+import com.tjt.service.CompanyService;
+import com.tjt.service.CompanytypeService;
+import com.tjt.service.CompanyusertypeService;
+import com.tjt.service.DeviceService;
+import com.tjt.service.DevicegpsService;
+import com.tjt.service.IntegralService;
+import com.tjt.service.MessagepushService;
+import com.tjt.service.MessagesService;
+import com.tjt.service.MessagestypeService;
+import com.tjt.service.ParametersService;
+import com.tjt.service.UserService;
+import com.tjt.service.UsercompanytypeService;
+import com.tjt.service.UserdeviceService;
+import com.tjt.service.UserparametersService;
+import com.tjt.util.ResultUtils;
+import com.tjt.util.TextUtility;
+
+@SuppressWarnings("serial")
+public class MobileAction extends ActionSupport{
+	private Map<String, Object> jsonResult;
+	
+
+	private CollectionsService collectionsService;
+	private CommentsService commentsService;
+	private CompanyService companyService;
+	private CompanytypeService companytypeService;
+	private CompanyusertypeService companyusertypeService;
+	private DevicegpsService devicegpsService;
+	private DeviceService deviceService;
+	private IntegralService integralService;
+	private MessagepushService messagepushService;
+	private MessagesService messagesService;
+	private MessagestypeService messagestypeService;
+	private ParametersService parametersService;
+	private UsercompanytypeService usercompanytypeService;
+	private UserdeviceService userdeviceService;
+	private UserparametersService userparametersService;
+	private UserService userService;
+	
+	//闁谎冾煼濡撅拷
+	public String mobile() throws UnsupportedEncodingException, JSONException{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		request.setCharacterEncoding("UTF-8");
+		String para=request.getParameter("para");
+		JSONObject jb = new JSONObject(para);
+		int type =  jb.getInt("sendtype");
+		JSONObject data = jb.getJSONObject("data");
+		switch (type) {
+		case 10001:
+			//http://127.0.0.1:8080/TJT/mobile!mobile.action?para={"sendtype":10001,"data":{"phone":"18858294600","password":"123456"}}
+			loginUser(data);
+			break;
+		case 10002:
+			updateUser(data);
+			break;
+		case 10003:
+			//http://127.0.0.1:8080/TJT/mobile!mobile.action?para={"sendtype":10003,"data":{"userPhone":"18858294600","userPassword":"123456","userNikename":"sss"}}
+			addUser(data);
+			break;
+		case 10004:
+			//http://127.0.0.1:8080/TJT/mobile!mobile.action?para={"sendtype":10001,"data":{"id":1}}
+			getUser(data);
+			break;
+		case 20001:
+			//http://127.0.0.1:8080/TJT/mobile!mobile.action?para={"sendtype":20001,"data":{"key":"l","messagestypeId":0,"pn":1,"ps":10}}
+			getMessages(data);
+			break;
+		case 20002:
+			//http://127.0.0.1:8080/TJT/mobile!mobile.action?para={"sendtype":20002,"data":{"acesstoken":"e13677ab-220e-4fe3-9dde-f72df5dfdf15","messagesInfo":"123456","messagesType":"sss","SLiving":{"livingId":6}}}
+			addMessages(data);
+			break;
+		case 20011:
+			//http://127.0.0.1:8080/TJT/mobile!mobile.action?para={"sendtype":20011,"data":{"mid":1,"pn":1,"ps":10}}
+			getComments(data);
+			break;
+		case 20012:
+			//http://127.0.0.1:8080/TJT/mobile!mobile.action?para={"sendtype":20012,"data":{"mid":1,"pn":1,"ps":10}}
+			addComments(data);
+			break;
+		case 41:
+//			if(data.has("comid"))
+//				//http://127.0.0.1:8080/House/mobile!mobile.action?para={"sendtype":41,"data":{"uid":1,"pn":1,"ps":10}}
+//				getCompanyById(data);
+//			else if(data.has("typeid")){
+//				//http://127.0.0.1:8080/House/mobile!mobile.action?para={"sendtype":41,"data":{"typeid":1,"pn":1,"ps":10}}
+//				getCompanyByType(data);
+//			}else{
+//				//http://127.0.0.1:8080/House/mobile!mobile.action?para={"sendtype":41,"data":{"pn":1,"ps":10}}
+//				getCompany(data);				
+//			}
+			break;
+		case 51:
+			//http://127.0.0.1:8080/House/mobile!mobile.action?para={"sendtype":51,"data":{"uid":1,"pn":1,"ps":10}}
+//			getCommentByUser(data);
+			break;
+		case 90001:
+			//http://127.0.0.1:8080/SunHome/mobile!mobile.action?para={"sendtype":90001,"data":{}}
+			getQiNiu();
+			break;
+		default:
+			senddefault();
+			//http://127.0.0.1:8080/SunHome/mobile!mobile.action?para={"sendtype":-1,"data":{}}
+			break;
+		}
+
+		return null;
+	}
+	
+	private void loginUser(JSONObject data) throws JSONException {
+		String loginId=data.getString("phone");
+		String loginPwd=data.getString("password");
+		TUser u=userService.checkLogin(loginId, loginPwd);
+		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("user", u);	
+		 map.put("data", map2);	
+		int status = 0;	
+		map.put("ret", status);
+		map.put("msg", "");
+		try {
+			ResultUtils.toJson(ServletActionContext.getResponse(), map);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void getUser(JSONObject data) throws JSONException {
+		int id=data.getInt("id");
+		TUser u=userService.getTUserById(id);
+		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("user", u);
+		 map.put("data", map2);
+		int status = 0;	
+		map.put("ret", status);
+		map.put("msg", "");
+		try {
+			ResultUtils.toJson(ServletActionContext.getResponse(), map);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void updateUser(JSONObject data) {
+		GsonBuilder builder = new GsonBuilder();
+		// 婵炴垶鎼幏鐑藉级閻戝洦瀚归柨鐔告灮閹风兘濮�敍鍕挄闁跨喐鏋婚幏鐑芥晸閿熺捶Expose
+		// 濠电偛顦归崝蹇氼暰闁跨喐鏋婚幏鐑芥晸閻ｅ矉鎷烽柨鐔绘閳绘捇鏁撻敓锟�//
+		// builder.excludeFieldsWithoutExposeAnnotation();
+		Gson gson = builder.create();
+		String s = data.toString();
+		TUser u = gson.fromJson(s, new TypeToken<TUser>() {
+		}.getType());
+		boolean b = userService.updateTUser(u);
+		Map<String, Object> map = new HashMap<String, Object>();
+		int status = 1;
+		if (b) {
+			status = 0;
+		} else {
+			status = 1;
+		}
+		map.put("ret", status);
+		map.put("msg", "");
+		try {
+			ResultUtils.toJson(ServletActionContext.getResponse(), map);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void addUser(JSONObject data) {
+		GsonBuilder builder = new GsonBuilder();
+		Gson gson = builder.create();
+		String s = data.toString();
+		TUser u = gson.fromJson(s, new TypeToken<TUser>() {
+		}.getType());
+
+		String ptime = TextUtility.formatDate(new Date());
+		u.setUserTime(ptime);
+		boolean b = userService.addTUser(u);
+		Map<String, Object> map = new HashMap<String, Object>();
+		int status = 1;
+		if (b) {
+			status = 0;
+			map.put("msg", "");
+		} else {
+			status = 1;
+			map.put("msg", "");
+		}
+		map.put("ret", status);
+		try {
+			ResultUtils.toJson(ServletActionContext.getResponse(), map);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void getMessages(JSONObject data) throws JSONException {
+		int pn = data.getInt("pn");
+		int ps = data.getInt("ps");
+		int messagestypeId = -1;
+		if(data.has("messagestypeId")){
+			messagestypeId = data.getInt("messagestypeId");
+		}
+		String key = null;
+		if(data.has("key")){
+			key = data.getString("key");
+		}
+		ArrayList<TMessages> ms = messagesService.getTMessagesforTypeByPageNum(key,messagestypeId, pn, ps);
+		Map<String, Object> map = new HashMap<String, Object>();
+		int status = 1;
+		if (ms != null) {
+			status = 0;
+			Map<String, Object> map2 = new HashMap<String, Object>();
+			map2.put("messagelist", ms);
+			map.put("data", map2);
+		} else {
+			status = 1;
+			map.put("data", "");
+		}
+		map.put("ret", status);
+		map.put("msg", "");
+		try {
+			ResultUtils.toJson(ServletActionContext.getResponse(), map);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void addMessages(JSONObject data) throws JSONException {
+		GsonBuilder builder = new GsonBuilder();
+		Gson gson = builder.create();
+		String s = data.toString();
+		TMessages u = gson.fromJson(s, new TypeToken<TMessages>() {
+		}.getType());
+
+		String ptime = TextUtility.formatDate(new Date());
+		u.setMessagesTime(ptime);
+		boolean b = messagesService.addTMessages(u);
+		Map<String, Object> map = new HashMap<String, Object>();
+		int status = 1;
+		if (b) {
+			status = 0;
+			map.put("msg", "");
+		} else {
+			status = 1;
+			map.put("msg", "");
+		}
+		map.put("ret", status);
+		try {
+			ResultUtils.toJson(ServletActionContext.getResponse(), map);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void getComments(JSONObject data) throws JSONException {
+		int pn = data.getInt("pn");
+		int ps = data.getInt("ps");
+		int MId = -1;
+		if(data.has("mid")){
+			MId = data.getInt("mid");
+		}
+		ArrayList<TComments> ms = commentsService.getTCommentsUIDByPageNum(MId, pn, ps);
+		Map<String, Object> map = new HashMap<String, Object>();
+		int status = 1;
+		if (ms != null) {
+			status = 0;
+			Map<String, Object> map2 = new HashMap<String, Object>();
+			map2.put("Commentslist", ms);
+			map.put("data", map2);
+		} else {
+			status = 1;
+			map.put("data", "");
+		}
+		map.put("ret", status);
+		map.put("msg", "");
+		try {
+			ResultUtils.toJson(ServletActionContext.getResponse(), map);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void addComments(JSONObject data) throws JSONException {
+		GsonBuilder builder = new GsonBuilder();
+		Gson gson = builder.create();
+		String s = data.toString();
+		TComments u = gson.fromJson(s, new TypeToken<TComments>() {
+		}.getType());
+
+		String ptime = TextUtility.formatDate(new Date());
+		u.setCommentsTime(ptime);
+		boolean b = commentsService.addTComments(u);
+		Map<String, Object> map = new HashMap<String, Object>();
+		int status = 1;
+		if (b) {
+			status = 0;
+			map.put("msg", "");
+		} else {
+			status = 1;
+			map.put("msg", "");
+		}
+		map.put("ret", status);
+		try {
+			ResultUtils.toJson(ServletActionContext.getResponse(), map);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void getQiNiu() {
+		Map<String, Object> map = new HashMap<String, Object>();
+		Config.ACCESS_KEY = "Vqr-78lW8vFdxG3YzjtwUM2AtaUSIwWL2COwH170";
+        Config.SECRET_KEY = "xlKhu1U0zlKSeEg4S35lwZ6EHakJinfOgV8RAfrW";
+		try
+		{
+	        Mac mac = new Mac(Config.ACCESS_KEY, Config.SECRET_KEY);
+	        // 请确保该bucket已经存在
+	        String bucketName = "xchange";
+	        PutPolicy putPolicy = new PutPolicy(bucketName);
+	        String uptoken = putPolicy.token(mac);
+	        Map<String, Object> map2 = new HashMap<String, Object>();
+			map2.put("uptoken", uptoken);
+			map.put("data", map2);
+	        map.put("ret", 0);
+	        map.put("msg", "");
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			map.put("ret", 1);
+			map.put("msg", e.getMessage());
+			map.put("data", "");
+		}
+		try {
+			ResultUtils.toJson(ServletActionContext.getResponse(), map);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+
+	
+	private void senddefault() {
+		Map<String, Object> map = new HashMap<String, Object>();
+		String status = null;
+		status = "1";
+		map.put("data", "");
+		map.put("ret", status);
+		map.put("msg", "error");
+		try {
+			ResultUtils.toJson(ServletActionContext.getResponse(), map);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public CollectionsService getCollectionsService() {
+		return collectionsService;
+	}
+
+	public void setCollectionsService(CollectionsService collectionsService) {
+		this.collectionsService = collectionsService;
+	}
+
+	public CommentsService getCommentsService() {
+		return commentsService;
+	}
+
+	public void setCommentsService(CommentsService commentsService) {
+		this.commentsService = commentsService;
+	}
+
+	public CompanyService getCompanyService() {
+		return companyService;
+	}
+
+	public void setCompanyService(CompanyService companyService) {
+		this.companyService = companyService;
+	}
+
+	public CompanytypeService getCompanytypeService() {
+		return companytypeService;
+	}
+
+	public void setCompanytypeService(CompanytypeService companytypeService) {
+		this.companytypeService = companytypeService;
+	}
+
+	public CompanyusertypeService getCompanyusertypeService() {
+		return companyusertypeService;
+	}
+
+	public void setCompanyusertypeService(
+			CompanyusertypeService companyusertypeService) {
+		this.companyusertypeService = companyusertypeService;
+	}
+
+	public DevicegpsService getDevicegpsService() {
+		return devicegpsService;
+	}
+
+	public void setDevicegpsService(DevicegpsService devicegpsService) {
+		this.devicegpsService = devicegpsService;
+	}
+
+	public DeviceService getDeviceService() {
+		return deviceService;
+	}
+
+	public void setDeviceService(DeviceService deviceService) {
+		this.deviceService = deviceService;
+	}
+
+	public IntegralService getIntegralService() {
+		return integralService;
+	}
+
+	public void setIntegralService(IntegralService integralService) {
+		this.integralService = integralService;
+	}
+
+	public MessagepushService getMessagepushService() {
+		return messagepushService;
+	}
+
+	public void setMessagepushService(MessagepushService messagepushService) {
+		this.messagepushService = messagepushService;
+	}
+
+	public MessagesService getMessagesService() {
+		return messagesService;
+	}
+
+	public void setMessagesService(MessagesService messagesService) {
+		this.messagesService = messagesService;
+	}
+
+	public MessagestypeService getMessagestypeService() {
+		return messagestypeService;
+	}
+
+	public void setMessagestypeService(MessagestypeService messagestypeService) {
+		this.messagestypeService = messagestypeService;
+	}
+
+	public ParametersService getParametersService() {
+		return parametersService;
+	}
+
+	public void setParametersService(ParametersService parametersService) {
+		this.parametersService = parametersService;
+	}
+
+	public UsercompanytypeService getUsercompanytypeService() {
+		return usercompanytypeService;
+	}
+
+	public void setUsercompanytypeService(
+			UsercompanytypeService usercompanytypeService) {
+		this.usercompanytypeService = usercompanytypeService;
+	}
+
+	public UserdeviceService getUserdeviceService() {
+		return userdeviceService;
+	}
+
+	public void setUserdeviceService(UserdeviceService userdeviceService) {
+		this.userdeviceService = userdeviceService;
+	}
+
+	public UserparametersService getUserparametersService() {
+		return userparametersService;
+	}
+
+	public void setUserparametersService(UserparametersService userparametersService) {
+		this.userparametersService = userparametersService;
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+	
+
+	
+}

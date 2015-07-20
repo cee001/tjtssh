@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>特检通</title>	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=GBK">
+ 	<script type="text/javascript" src="js/jquery.js"></script>   
+	<link href="css/linkStyle.css" rel="stylesheet" type="text/css" />
+	<link href="css/tjthomeStyle.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+  
+            $(function(){   
+                           
+                 $("#divp1").load("qhead.jsp?RandStr="+Math.random()); 	  
+                 $("#divp2a").load("qSearchnews.jsp");                 	  
+                 $("#divp2b").load("qdh.jsp"); 	  
+                 $("#divp2c3a").load("lunbot.html"); 	                  
+                 $("#divp2c3b").load("qlistdate.jsp"); 	        
+                 $("#divp2c2a").load("new!showlist1.action?num=0");                                    
+                 $("#divp2c2b").load("qlistexchange.jsp");  
+                 $("#divp2c1a").load("qlistexchange1.jsp");
+                 $("#divp2c1b").load("qlistexchange2.jsp"); 
+                 $("#divp2c1c").load("qlistexchange3.jsp");  
+                 $("#divp2d1").load("qlistsupdem.jsp");                                  
+                 $("#divp2d2").load("qlistjob.jsp");  
+                 $("#divp2d3").load("qlistforjob.jsp"); 
+                 $("#divp21").load("qfoot.jsp"); 
+
+            	 $.ajax({ 
+            	     async:false,   			          	       		
+				     type:"get",
+				     url:"qlistekNondestructive.jsp?RandStr="+Math.random(), 
+				     success:function(d){				                 
+				            $("#divp2f").html(d);       
+				     }              			
+				   });
+				 $.ajax({ 
+            	     async:false,   			          	       		
+				     type:"get",
+				     url:"qlistekPhycal.jsp?RandStr="+Math.random(), 
+				     success:function(d){				                 
+				            $("#divp2g").html(d);       
+				     }              			
+				   });
+				 $.ajax({ 
+            	     async:false,   			          	       		
+				     type:"get",
+				     url:"qlistekpressure.jsp?RandStr="+Math.random(), 
+				     success:function(d){				                 
+				            $("#divp2h").html(d);       
+				     }              			
+				   }); 
+				 $.ajax({ 
+            	     async:false,   			          	       		
+				     type:"get",
+				     url:"qlistekPole.jsp?RandStr="+Math.random(), 
+				     success:function(d){				                 
+				            $("#divp2i").html(d);       
+				     }              			
+				   });
+				 $.ajax({ 
+            	     async:false,   			          	       		
+				     type:"get",
+				     url:"qlistekmeasure.jsp?RandStr="+Math.random(), 
+				     success:function(d){				                 
+				            $("#divp2j").html(d);       
+				     }              			
+				   });
+				 $.ajax({ 
+            	     async:false,   			          	       		
+				     type:"get",
+				     url:"qlistekspecial.jsp?RandStr="+Math.random(), 
+				     success:function(d){				                 
+				            $("#divp2k").html(d);       
+				     }              			
+				   });         
+				                       
+            	 $.ajax({ 			          	       		
+				     type:"get",
+				     url:"kong.jsp", 
+				     success:function(d){
+				                 
+				            $("#divdh").html(d);
+				     		var did=document.getElementById("d1").value;  	
+							document.getElementById(did).style.background="url(images/TJT/96.png)";
+							document.getElementById(did).style.color="red";	       
+				     }              
+			
+				   });
+		   
+	  });
+	        function openhref(src){
+   
+       		 $.ajax({ 
+			     async:false,    	       		
+				     type:"get",
+				     url:src+"&RandStr="+Math.random(), 
+				     //dataType:json,
+				     //cache:"false",
+
+				     success:function(d){
+				                 
+				                 $("#divp2c2a").html(d);  
+	                              
+	                             }
+	                            	                        			
+				});	
+			}	      
+      
+  
+    </script>
+  </head>
+  
+  <body>
+    <div id="indexdiv"> 
+       <div id="divp1">
+         
+       </div>
+       <div id="divp2" onmouseover="rechangex1()">
+           <div onmouseover="rechangex1()" id="divp2a">       
+           
+           </div> 
+           <div id="divp2b">  
+    
+           </div> 
+           <div id="divp2c">
+              <div id="divp2c1">
+                 <div id="divp2c1a">                 
+                 </div>
+                 <div id="divp2c1b">
+                 </div>
+                 <div id="divp2c1c">
+                 </div>                 
+              </div>     
+              <div id="divp2c2">
+                 <div id="divp2c2a">
+                 
+                 </div>
+                 <div id="divp2c2b">
+                 </div>
+              </div>
+              <div id="divp2c3">
+                 <div id="divp2c3a">
+                 
+                 </div>
+                 <div id="divp2c3b">
+                 
+                 </div>
+              </div>  
+           </div>   
+           <div id="divp2d">    
+              <div id="divp2d1">           
+              </div>
+              <div id="divp2d2">
+              </div>
+              <div id="divp2d3">
+              </div>
+           </div> 
+           <div id="divp2e">  
+              <div style="width:100%;height:28px;background: #4A708B;text-align: center;color:#ffffff;font-family: 微软雅黑;font-size: 20px;padding-top:4px;">
+                                                        商 城
+              </div> 
+              <div style="width:100%;height:3px;background: #4A708B;margin-top: 2px;">
+                        
+              </div>              
+           </div> 
+           <div id="divp2f">  
+           1F     
+           </div> 
+           <div id="divp2g"> 
+           2F      
+           </div> 
+           <div id="divp2h">  
+           3F     
+           </div> 
+           <div id="divp2i"> 
+           4F      
+           </div> 
+           <div id="divp2j"> 
+           5F
+           </div> 
+           <div id="divp2k">   
+           6F    
+           </div>       
+           <div id="divp21">   
+           FOOT    
+           </div>                     
+       </div>    
+
+    </div>
+  </body>
+</html>

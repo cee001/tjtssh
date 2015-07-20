@@ -1,0 +1,309 @@
+package com.tjt.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import com.google.gson.annotations.Expose;
+
+/**
+ * TUser entity. @author MyEclipse Persistence Tools
+ */
+
+public class TUser implements java.io.Serializable {
+
+	// Fields
+
+	@Expose
+	private Integer userId;
+	@Expose
+	private String userPhone;
+	private String userPassword;
+	@Expose
+	private String userNikename;
+	@Expose
+	private String userTime;
+	@Expose
+	private Short userStatus;
+	@Expose
+	private String userImgface;
+	@Expose
+	private String userTruename;
+	@Expose
+	private String userAddress;
+	@Expose
+	private String userCity;
+	@Expose
+	private Boolean userSex;
+	@Expose
+	private String userProfession;
+	private Set TCollectionses = new HashSet(0);
+	private Set TIntegrals = new HashSet(0);
+	private Set TUserdevicesForTouserId = new HashSet(0);
+	private Set TDevicegpses = new HashSet(0);
+	private Set TCommentses = new HashSet(0);
+	private Set TCompanies = new HashSet(0);
+	private Set TUserdevicesForUsertoId = new HashSet(0);
+     private Set TUsergpses = new HashSet(0);
+	private Set TDevicesForUserId = new HashSet(0);
+	private Set TMessagepushs = new HashSet(0);
+	private Set TMessageses = new HashSet(0);
+	private Set TParameterses = new HashSet(0);
+	private Set TDevicesForCreateuserId = new HashSet(0);
+	private Set TUserparameterses = new HashSet(0);
+
+	// Constructors
+
+	/** default constructor */
+	public TUser() {
+	}
+
+	/** minimal constructor */
+	public TUser(String userPhone, String userPassword, String userNikename,
+			String userTime, Short userStatus) {
+		this.userPhone = userPhone;
+		this.userPassword = userPassword;
+		this.userNikename = userNikename;
+		this.userTime = userTime;
+		this.userStatus = userStatus;
+	}
+
+	/** full constructor */
+    public TUser(String userPhone, String userPassword, String userNikename, String userTime, Short userStatus, String userImgface, String userTruename, String userAddress, String userCity, Boolean userSex, String userProfession, Set TCollectionses, Set TIntegrals, Set TUserdevicesForTouserId, Set TDevicegpses, Set TCommentses, Set TCompanies, Set TUserdevicesForUsertoId, Set TUsergpses, Set TDevicesForUserId, Set TMessagepushs, Set TMessageses, Set TParameterses, Set TDevicesForCreateuserId, Set TUserparameterses) {
+        this.userPhone = userPhone;
+        this.userPassword = userPassword;
+        this.userNikename = userNikename;
+        this.userTime = userTime;
+        this.userStatus = userStatus;
+        this.userImgface = userImgface;
+        this.userTruename = userTruename;
+        this.userAddress = userAddress;
+        this.userCity = userCity;
+        this.userSex = userSex;
+        this.userProfession = userProfession;
+        this.TCollectionses = TCollectionses;
+        this.TIntegrals = TIntegrals;
+        this.TUserdevicesForTouserId = TUserdevicesForTouserId;
+        this.TDevicegpses = TDevicegpses;
+        this.TCommentses = TCommentses;
+        this.TCompanies = TCompanies;
+        this.TUserdevicesForUsertoId = TUserdevicesForUsertoId;
+        this.TUsergpses = TUsergpses;
+		this.TDevicesForUserId = TDevicesForUserId;
+		this.TMessagepushs = TMessagepushs;
+		this.TMessageses = TMessageses;
+		this.TParameterses = TParameterses;
+		this.TDevicesForCreateuserId = TDevicesForCreateuserId;
+		this.TUserparameterses = TUserparameterses;
+	}
+
+	// Property accessors
+
+	public Integer getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+	public String getUserPhone() {
+		return this.userPhone;
+	}
+
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+
+	public String getUserPassword() {
+		return this.userPassword;
+	}
+
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
+	}
+
+	public String getUserNikename() {
+		return this.userNikename;
+	}
+
+	public void setUserNikename(String userNikename) {
+		this.userNikename = userNikename;
+	}
+
+	public String getUserTime() {
+		return this.userTime;
+	}
+
+	public void setUserTime(String userTime) {
+		this.userTime = userTime;
+	}
+
+	public Short getUserStatus() {
+		return this.userStatus;
+	}
+
+	public void setUserStatus(Short userStatus) {
+		this.userStatus = userStatus;
+	}
+
+	public String getUserImgface() {
+		return this.userImgface;
+	}
+
+	public void setUserImgface(String userImgface) {
+		this.userImgface = userImgface;
+	}
+
+	public String getUserTruename() {
+		return this.userTruename;
+	}
+
+	public void setUserTruename(String userTruename) {
+		this.userTruename = userTruename;
+	}
+
+	public String getUserAddress() {
+		return this.userAddress;
+	}
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	public String getUserCity() {
+		return this.userCity;
+	}
+
+	public void setUserCity(String userCity) {
+		this.userCity = userCity;
+	}
+
+	public Boolean getUserSex() {
+		return this.userSex;
+	}
+
+	public void setUserSex(Boolean userSex) {
+		this.userSex = userSex;
+	}
+
+	public String getUserProfession() {
+		return this.userProfession;
+	}
+
+	public void setUserProfession(String userProfession) {
+		this.userProfession = userProfession;
+	}
+
+	public Set getTCollectionses() {
+		return this.TCollectionses;
+	}
+
+	public void setTCollectionses(Set TCollectionses) {
+		this.TCollectionses = TCollectionses;
+	}
+
+	public Set getTIntegrals() {
+		return this.TIntegrals;
+	}
+
+	public void setTIntegrals(Set TIntegrals) {
+		this.TIntegrals = TIntegrals;
+	}
+
+	public Set getTUserdevicesForTouserId() {
+		return this.TUserdevicesForTouserId;
+	}
+
+	public void setTUserdevicesForTouserId(Set TUserdevicesForTouserId) {
+		this.TUserdevicesForTouserId = TUserdevicesForTouserId;
+	}
+
+	public Set getTDevicegpses() {
+		return this.TDevicegpses;
+	}
+
+	public void setTDevicegpses(Set TDevicegpses) {
+		this.TDevicegpses = TDevicegpses;
+	}
+
+	public Set getTCommentses() {
+		return this.TCommentses;
+	}
+
+	public void setTCommentses(Set TCommentses) {
+		this.TCommentses = TCommentses;
+	}
+
+	public Set getTCompanies() {
+		return this.TCompanies;
+	}
+
+	public void setTCompanies(Set TCompanies) {
+		this.TCompanies = TCompanies;
+	}
+
+	public Set getTUserdevicesForUsertoId() {
+		return this.TUserdevicesForUsertoId;
+	}
+
+	public void setTUserdevicesForUsertoId(Set TUserdevicesForUsertoId) {
+		this.TUserdevicesForUsertoId = TUserdevicesForUsertoId;
+	}
+
+    public Set getTUsergpses() {
+        return this.TUsergpses;
+    }
+    
+    public void setTUsergpses(Set TUsergpses) {
+        this.TUsergpses = TUsergpses;
+    }
+
+    public Set getTDevicesForUserId() {
+        return this.TDevicesForUserId;
+    }
+    
+    public void setTDevicesForUserId(Set TDevicesForUserId) {
+        this.TDevicesForUserId = TDevicesForUserId;
+    }
+
+	public Set getTMessagepushs() {
+		return this.TMessagepushs;
+	}
+
+	public void setTMessagepushs(Set TMessagepushs) {
+		this.TMessagepushs = TMessagepushs;
+	}
+
+	public Set getTMessageses() {
+		return this.TMessageses;
+	}
+
+	public void setTMessageses(Set TMessageses) {
+		this.TMessageses = TMessageses;
+	}
+
+	public Set getTParameterses() {
+		return this.TParameterses;
+	}
+
+	public void setTParameterses(Set TParameterses) {
+		this.TParameterses = TParameterses;
+	}
+
+	public Set getTDevicesForCreateuserId() {
+		return this.TDevicesForCreateuserId;
+	}
+
+	public void setTDevicesForCreateuserId(Set TDevicesForCreateuserId) {
+		this.TDevicesForCreateuserId = TDevicesForCreateuserId;
+	}
+
+	public Set getTUserparameterses() {
+		return this.TUserparameterses;
+	}
+
+	public void setTUserparameterses(Set TUserparameterses) {
+		this.TUserparameterses = TUserparameterses;
+	}
+
+}

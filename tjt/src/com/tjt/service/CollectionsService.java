@@ -1,0 +1,101 @@
+package com.tjt.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import com.tjt.dao.CommonDAO;
+import com.tjt.entity.TCollections;
+
+public class CollectionsService {
+	private CommonDAO cd;
+
+	public CommonDAO getCd() {
+		return cd;
+	}
+
+	public void setCd(CommonDAO cd) {
+		this.cd = cd;
+	}
+	
+	//��½
+	public TCollections checkCollections(int user_id,int messages_id){
+		TCollections u=null;
+		
+		String hql="from TCollections where user_id='"+user_id+"'and messages_id='"+messages_id+"'";
+		@SuppressWarnings("rawtypes")
+		List ls=cd.getObjects(hql);
+		if(ls!=null&&ls.size()>0){
+			System.out.println("��½�ɹ���");
+			u=(TCollections)ls.get(0);
+		}else{
+			System.out.println("��½���ɹ���");
+		}
+		return u;				
+	}
+	//���
+	public boolean addTCollections(TCollections u){
+		try{
+			cd.addObject(u);
+			return true;
+			
+		}catch(Exception ex){
+			return false;
+		}
+		
+	}
+	   //�޸ġ�
+    public boolean updateTCollections(TCollections u){
+        try{
+        	cd.updateObject(u);
+        	return true;
+        }catch(Exception ex){
+        	return false;
+        }
+    }
+    
+    //ɾ��
+    public boolean delTCollections(TCollections u){
+        try{
+        	cd.delObject(u);
+        	return true;
+        }catch(Exception ex){
+        	return false;
+        }    
+
+    }
+    
+    //��ȡ����
+    public TCollections getTCollectionsById(int id){
+
+    	return (TCollections)cd.getObject(TCollections.class, id);
+    }
+    
+    
+	//��ȡ����
+	@SuppressWarnings("unchecked")
+	public ArrayList<TCollections> getTCollectionss(){
+		String hql="from TCollections";
+		return (ArrayList<TCollections>)cd.getObjects(hql);
+	}
+	
+	//��ҳ��ȡ����
+	public int getCounts(){
+		String hql="from TCollections";
+		return cd.getObjects(hql).size();
+		
+	}
+	public int getcount(){
+		String hql="select count(*) from TCollections";
+		return Integer.parseInt(cd.getObjects(hql).get(0).toString());
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<TCollections> getTCollectionsByPageNum(int pageNum,int pageSize){
+		String hql="from TCollections";
+		return (ArrayList<TCollections>)cd.getObjectByPageNum(hql, pageNum, pageSize);
+	}
+	@SuppressWarnings("unchecked")
+	public ArrayList<TCollections> getTCollectionsUIDByPageNum(int uid, int pageNum,int pageSize){
+		String hql="from TCollections where  collections_status = '1' and user_id = '"+ uid +"'";
+		return (ArrayList<TCollections>)cd.getObjectByPageNum(hql, pageNum, pageSize);
+	}
+}

@@ -1,0 +1,157 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+
+
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+<style type="text/css">
+<!--#indexdiv { width: 99%; margin:0; overflow:inherit; height:99%; } 
+body { margin:0px;padding:0px;}
+#divp1  { visibility: visible;position:absolute;  top:60px; left:200px; float: left;border: 1px solid;border-color:green;width:400px;}
+</style>
+    <script>
+         function time(){  
+                    var myDate = new Date();
+                    var Y=myDate.getFullYear();    
+                    var M=myDate.getMonth();     
+                    var D=myDate.getDate();  
+                    var T=myDate.toLocaleTimeString();   
+                    var time=Y+"-"+M+"-"+D+" "+T;                
+                    document.getElementById("t1").value=time;                         
+                   
+         }   
+            
+	  function checkLogin(){
+			
+			var objL1=document.getElementById("l1");
+			var objP1=document.getElementById("p1");
+			var objP2=document.getElementById("p2");						
+			if(objL1.value==""){
+				alert("请填入帐号!");
+				objL1.focus();
+				return false;
+			}		
+			
+			if(objL1.value.length<6){
+				alert("字符不得少于6位!");
+				objL1.focus();
+				return false;
+			}
+			
+			
+				
+			for(var i=0;i<objL1.value.length;i++){	
+			  
+				var v1=objL1.value.charAt(i);
+				if(!(v1>='a'|v1>='0' && v1<='z'|v1<='9')){
+					alert("用户名必须为字母");
+					objL1.select();
+					return false;	
+				}
+			}						
+			
+			if(objP1.value==""){
+				
+				objP1.focus();
+				return false;
+			}
+			if(objP1.value.length<6){
+				alert("密码至少为6位数!");
+				objP1.focus();
+				return false;	
+			}
+			if(objP2.value==""){
+				alert("请确认密码!");
+				objP2.focus();
+				return false;
+			}
+			if(objP1.value!=objP2.value){
+				alert("密码输入不一致");
+				objP2.focus();
+				return false;	
+			}
+			}
+    </script> 
+  </head>
+
+  
+  <body bgcolor="#FCFCFC">
+	  <form onsubmit="return checkLogin()" action="admin!doAdd.action" method="post">
+        <input id="t1" type="hidden" name="u.regDate">
+   	    <input type="hidden" name="u.roleInfo.roleId" value="6"> 
+
+   <div id="indexdiv">
+   <div  id="divp1" >
+    <table align="center" border="0" bgcolor="#FCFCFC" border-color="#3A5FCD" cellspacing="1">
+        <tr>
+        <td >&nbsp</td>
+        </tr> 
+        <tr  style="font-size:22px;color:green;">
+        <td >&nbsp</td>
+        <td colspan="3" >添加员工</td>
+        
+        </tr>
+        <tr>
+        <td>&nbsp</td>
+        </tr> 
+        <tr>
+        <td width="100">&nbsp</td>
+        <td width="50"><font color="green" >账号:</font></td>
+        <td><input id="l1" type="text" name="u.loginId" style=" border:none;font-size:16px; height:25px; width:150px"/></td>
+        <td width="100">&nbsp</td>
+        </tr>
+        <tr>
+        <td>&nbsp</td>
+        <td> <font color="green">密码:</font></td>
+        <td><input id="p1" type="password" name="u.loginPwd" style=" border:none;font-size:16px; height:25px; width:150px"/></td>
+        
+        <td>&nbsp</td>
+        </tr>
+
+        <tr>
+        <td>&nbsp</td>
+        <td> <font color="green">确认:</font></td>
+        <td><input id="p2" type="password" name="reLoginPwd" style=" border:none;font-size:16px; height:25px; width:150px"/></td>
+        
+        <td>&nbsp</td>
+        </tr>
+
+        <tr>
+        <td>&nbsp</td>
+        </tr>         
+        <tr>
+        <td >&nbsp</td>
+        <td >&nbsp</td>
+        <td width="150" align="center">
+         <strong> 
+        <input class="bt" onclick="time()" type="submit" value="添 加"
+         style=" border:none; height:25px;font-size:20px;color:green; width:120px; background:url(images/bt.png)" />
+         </strong>   
+         </td>
+         <td>&nbsp</td>
+        </tr>
+        <tr>
+        <td>&nbsp</td>
+        </tr> 
+    
+    
+    </table> 
+    </div>
+    </div>
+    </form>
+  </body>
+</html>
+
+
+

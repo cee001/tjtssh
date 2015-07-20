@@ -1,0 +1,81 @@
+package com.tjt.common;
+
+public class Pager {
+	
+	public static String getPaging(int pageNum,int pageSize,int count,String url){
+		String pager="";
+    	if(pageNum<=1){
+    		pager+="��һҳ";
+    	}else{
+    		pager+="<a href='"+url+"?p="+(pageNum-1)+"'>��һҳ</a> ";
+    	}    	
+    	//���һҳҳ��
+    	int lastPager=count/pageSize;
+    	if(count%pageSize!=0){
+    		lastPager++;
+    	}
+    	if(pageNum>=lastPager){
+    		pager+=" ��һҳ";
+    	}else{
+    		pager+="<a href='"+url+"?p="+(pageNum+1)+"'>��һҳ</a>";
+    	} 
+    	return pager;
+	}
+	/*public static String getPaging(int pageNum,int pageSize,int count,String url,int nid){
+		String pager="";
+    	if(pageNum<=1){
+    		pager+="��һҳ";
+    	}else{
+    		pager+="<a href='"+url+"!Listd.action?p="+(pageNum-1)+"&nn.nid="+nid+"'>��һҳ</a> ";
+    	}    	
+    	//���һҳҳ��
+    	int lastPager=count/pageSize;
+    	if(count%pageSize!=0){
+    		lastPager++;
+    	}
+    	if(pageNum>=lastPager){
+    		pager+=" ��һҳ";
+    	}else{
+    		pager+="<a href='"+url+"!Listd.action?p="+(pageNum+1)+"&nn.nid="+nid+"'>��һҳ</a>";
+    	} 
+    	return pager;
+	}*/
+	public static String getPaging(int pageNum,int pageSize,int count,String url,int id){
+		String pager="";
+    	if(pageNum<=1){
+    		pager+="��һҳ";
+    	}else{
+    		pager+="<a href='"+url+"!showlistd.action?p="+(pageNum-1)+"&u.id="+id+"'>��һҳ</a> ";
+    	}    	
+    	//���һҳҳ��
+    	int lastPager=count/pageSize;
+    	if(count%pageSize!=0){
+    		lastPager++;
+    	}
+    	if(pageNum>=lastPager){
+    		pager+=" ��һҳ";
+    	}else{
+    		pager+="<a href='"+url+"!showlistd.action?p="+(pageNum+1)+"&u.id="+id+"'>��һҳ</a>";
+    	} 
+    	return pager;
+	}
+	/*public static String getPaging(int pageNum,int pageSize,int count,String url,int tid){
+		String pager="";
+    	if(pageNum<=1){
+    		pager+="��һҳ";
+    	}else{
+    		pager+="<a href='"+url+"?t=list&p="+(pageNum-1)+"&tid="+tid+"'>��һҳ</a> ";
+    	}    	
+    	//���һҳҳ��
+    	int lastPager=count/pageSize;
+    	if(count%pageSize!=0){
+    		lastPager++;
+    	}
+    	if(pageNum>=lastPager){
+    		pager+=" ��һҳ";
+    	}else{
+    		pager+="<a href='"+url+"?t=list&p="+(pageNum+1)+"&tid="+tid+"'>��һҳ</a>";
+    	} 
+    	return pager;
+	}*/
+}
